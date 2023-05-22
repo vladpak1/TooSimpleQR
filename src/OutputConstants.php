@@ -2,6 +2,11 @@
 
 namespace vladpak1\TooSimpleQR;
 
+/**
+ * Class OutputConstants.
+ *
+ * This class contains constants that are used to set the output format,
+ */
 final class OutputConstants
 {
     public const OUTPUT_PNG = 'png';

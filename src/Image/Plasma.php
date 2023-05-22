@@ -3,7 +3,6 @@
 namespace vladpak1\TooSimpleQR\Image;
 
 use Imagick;
-use vladpak1\TooSimpleQR\Entity\Base64;
 use vladpak1\TooSimpleQR\Exception\RenderException;
 
 /**
@@ -68,10 +67,7 @@ class Plasma
 
     public function generate(): Image
     {
-        $plasma = $this->render();
-        $base64 = new Base64($plasma->encode('data-url'));
-
-        return new Image($base64);
+        return new Image($this->render(), 'png');
     }
 
     protected function render(): \Intervention\Image\Image

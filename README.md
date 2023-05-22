@@ -2,31 +2,33 @@
     vladpak1\TooSimpleQR
 </h1>
 
-**TooSimpleQR** это обертка над чудесным [chillerlan/php-qrcode](https://github.com/chillerlan/php-qrcode), которая
-упрощает генерацию QR кодов, уделяя больше внимания внешним кастомизациям и простоте интерфейса.
-Это мой небольшой пет-проект, который очень далек от идеала, так что используйте на свой страх и риск.
+**TooSimpleQR** is a wrapper over the wonderful [chillerlan/php-qrcode](https://github.com/chillerlan/php-qrcode), which
+simplifies QR code generation, paying more attention to customizations and ease of interface.
 
-Если вы хотите генерировать QR коды в серьезном проекте, лучше
-используйте [chillerlan/php-qrcode](https://github.com/chillerlan/php-qrcode).
+This small pet project is far from perfect, as I'm still a beginner developer learning the ropes. Please keep in mind my
+limited experience when using it, and proceed at your own risk.
 
-Примеры созданных с помощью этой библиотеки QR кодов:
+If you want to generate QR codes in a serious project, it's better
+to use [chillerlan/php-qrcode](https://github.com/chillerlan/php-qrcode).
+
+Examples of QR codes created with this library:
 <p align="center">
 <img src="https://i.postimg.cc/HxrNR9tc/presets.png" alt="">
 </p>
 
-## Требования
+## Requirements
 
 - PHP 8.0+
 - Composer
-- GD или Imagick
+- GD or Imagick
 
-## Установка
+## Installation
 
 ```bash
 composer require vladpak1/too-simple-qr
 ```
 
-## Пример использования
+## Usage Example
 
 ```php
 
@@ -34,7 +36,7 @@ use vladpak1\TooSimpleQR\QRFactory;
 use vladpak1\TooSimpleQR\OutputConstants;
 use vladpak1\TooSimpleQR\Image\Logo;
 
-// Загружаем composer
+// Load composer
 require_once __DIR__ . '/vendor/autoload.php';
 
 $qr = \vladpak1\TooSimpleQR\QRFactory::QRCode();
@@ -46,33 +48,33 @@ $logo->setByPath(Logo::TWITTER_LOGO);
 
 $settings
     ->setOutput(OutputConstants::OUTPUT_PNG)
-    ->setSize(500)                              // Размер в пикселях.
-    ->setBackgroundColor('#ffffff')             // Цвет фона в формате HEX.
-    ->setMargin(50)                             // Отступ от краев в пикселях.
-    ->setFinderColor('#1d9bf0')                 // Цвет файндеров в формате HEX.
-    ->setDataColor('#3284bc')                   // Цвет данных в формате HEX.
-    ->setCorrectionLevel(OutputConstants::CORRECTION_LEVEL_H) // Уровень коррекции ошибок.
-    ->setCircularModules(true)                  // Округлять модули.
-    ->setCircleRadius(0.75)                     // Радиус окружности.
-    ->setLogo($logo)                            // Логотип.
-    ->setCustomFinderShape(OutputConstants::SHAPE_CIRCLE); // Форма файндеров.
+    ->setSize(500)                              // Size in pixels.
+    ->setBackgroundColor('#ffffff')             // Background color in HEX format.
+    ->setMargin(50)                             // Margin in pixels.
+    ->setFinderColor('#1d9bf0')                 // Finder color in HEX format.
+    ->setDataColor('#3284bc')                   // Data color in HEX format.
+    ->setCorrectionLevel(OutputConstants::CORRECTION_LEVEL_H) // Correction level.
+    ->setCircularModules(true)                  // Round modules.
+    ->setCircleRadius(0.75)                     // Circle radius.
+    ->setLogo($logo)                            // Logo.
+    ->setCustomFinderShape(OutputConstants::SHAPE_CIRCLE); // Custom finder shape.
 
 $qrCodeImage = $qr
     ->setData('Hello World!')
     ->setSettings($settings)
     ->render();
     
-// Теперь мы можем сохранить или сразу вывести (как HTML) QR код.
+// Now we can save or directly output (as HTML) the QR code.
 $qrCodeImage->echo();
 
 ```
 
-В результате мы получим:
+As a result, we get:
 <p align="center">
 <img src="https://i.postimg.cc/MK1pgysF/example-1.png" alt="">
 </p>
 
-Также мы можем изуродовать этот QR код, добавив, например градиент:
+We can also distort the QR code by adding, for example, a gradient:
 
 ```php
 ->setBackgroundGradient('#FFD8D8', '#FFF9F9', Gradient::DIRECTION_BOTTOM_TO_TOP);
@@ -82,57 +84,56 @@ $qrCodeImage->echo();
 <img src="https://i.postimg.cc/cHv2gG65/12.png" alt="">
 </p>
 
-## Нужно быстро сгенерировать QR код?
+## Need to quickly generate a QR code?
 
-Воспользуйтесь пресетами — заранее подготовленными настройками для генерации QR кода.
+Consider using presets — predefined settings for generating QR codes.
 
-Вы также легко можете создавать свои пресеты, наследуясь от абстрактного
-класса `vladpak1\TooSimpleQR\Preset\AbstractPreset`.
+You can easily create your own presets by extending the `vladpak1\TooSimpleQR\Preset\AbstractPreset` class.
 
-Пример использования пресета:
+Example of using a preset:
 
 ```php
 
 $preset = new \vladpak1\TooSimpleQR\Preset\Presets\InstagramPreset('Hello World!');
 
-// Вы также можете задать драйвер и интерфейс вывода для пресета.
+// You can also set the driver and output interface for the preset.
 $preset
     ->setDriver(\vladpak1\TooSimpleQR\OutputConstants::DRIVER_GD)
     ->setOutput(\vladpak1\TooSimpleQR\OutputConstants::OUTPUT_PNG);
     
-// Мы получили брендированный QR код Instagram.
+// We get a branded Instagram QR code.
 $preset->render()->save('path/to/qr.png');
 
 
 ```
 
-## GD или Imagick?
+## GD or Imagick?
 
-Эта библиотека будет работать с любым из них, но некоторые настройки поддерживаются только Imagick.
-Вероятно, в будущем я приведу все к более консистентному виду и разница драйверов не будет так заметна.
-Однако на данный момент рекомендуется использования Imagick.
+This library will work with either GD or Imagick, but some settings are only supported by Imagick.
+Probably in the future, I will make everything more consistent and the difference in drivers will not be so noticeable.
+However, at the moment, Imagick is recommended.
 
-Драйвер для использования определяется автоматически в зависимости от того, какой из них установлен на вашем сервере,
-отдавая предпочтение Imagick.
+The library will automatically select the driver to use, based on what is installed on your server, giving preference to
+Imagick.
 
-Но вы также можете принудительно указать драйвер:
+But you can also forcibly specify the driver:
 
 ```php
 $qr->setDriver(OutputConstants::DRIVER_GD);
 ```
 
-## Тестирование
+## Testing
 
-TooSimpleQR использует [PHPUnit](https://github.com/sebastianbergmann/phpunit) для тестирования.
-На данный момент тестов практически нет в основном из-за ошибок в архитектуре пакета, которые я буду стараться
-исправлять.
+TooSimpleQR uses [PHPUnit](https://github.com/sebastianbergmann/phpunit) for testing.
+Currently, there are very few tests, mainly due to issues with the package architecture. I plan to address these issues
+in future updates.
 
-Для запуска тестов используйте:
+To run tests, use the following command:
 
 ```bash
 composer test
 ```
 
-## Лицензия
+## License
 
-TooSimpleQR распространяется под лицензией MIT.
+TooSimpleQR is licensed under the MIT license.

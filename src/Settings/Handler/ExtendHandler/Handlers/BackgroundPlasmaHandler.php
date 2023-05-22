@@ -5,7 +5,6 @@ namespace vladpak1\TooSimpleQR\Settings\Handler\ExtendHandler\Handlers;
 use Intervention\Image\Image;
 use Throwable;
 use vladpak1\TooSimpleQR\Exception\SettingsLogicException;
-use vladpak1\TooSimpleQR\Image\InterventionWrapperStatic;
 use vladpak1\TooSimpleQR\Image\Plasma;
 use vladpak1\TooSimpleQR\Settings\Handler\ExtendHandler\AbstractExtendHandler;
 use vladpak1\TooSimpleQR\Settings\QRSettings;
@@ -30,16 +29,13 @@ final class BackgroundPlasmaHandler extends AbstractExtendHandler
                 ->setCanvasSize($image->width(), $image->height())
                 ->generate();
 
-            $base64Encoded    = $plasmaImage->getBase64()->getBase64();
-            $plasmaBackground = InterventionWrapperStatic::make($base64Encoded);
+            return $plasmaImage->get()->insert($image, 'center');
 
-            return $plasmaBackground->insert($image, 'center');
-
-        } catch (Throwable $th) {
+        } catch (Throwable $e) {
             throw new SettingsLogicException(
                 sprintf(
                     'An error occurred while generating plasma background. Error: %s',
-                    $this->settingName
+                    $e
                 )
             );
         }
