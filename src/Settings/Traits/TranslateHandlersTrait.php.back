@@ -1,0 +1,69 @@
+<?php
+
+namespace vladpak1\TooSimpleQR\Settings\Traits;
+
+trait TranslateHandlersTrait
+{
+    public function setOutput(string $outputType): self
+    {
+        $this->setTranslatableSetting('output', $outputType);
+
+        return $this;
+    }
+
+    public function setTransparentBackground(bool $transparentBackground): self
+    {
+        $this->setTranslatableSetting('transparentBackground', $transparentBackground);
+
+        return $this;
+    }
+
+    public function setScale(int $scale): self
+    {
+        $this->setTranslatableSetting('scale', $scale);
+
+        return $this;
+    }
+
+    public function setCorrectionLevel(string $correctionLevel): self
+    {
+        $this->setTranslatableSetting('correctionLevel', $correctionLevel);
+
+        return $this;
+    }
+
+    public function setFinderColor(string $hex): self
+    {
+        $this->setTranslatableSetting('finderColor', $hex);
+
+        return $this;
+    }
+
+    /**
+     * Writes circleRadius setting and sets circularModules to true.
+     */
+    public function setCircularModules(bool $circularModules): self
+    {
+        $this->setTranslatableSetting('circularModules', $circularModules);
+
+        if ($this->getSetting('circleRadius') === false) {
+            $this->setCircleRadius(0.45);
+        }
+
+        return $this;
+    }
+
+    public function setCircleRadius(float $circleRadius): self
+    {
+        $this->setTranslatableSetting('circleRadius', $circleRadius);
+
+        return $this;
+    }
+
+    public function setVersion(int $version): self
+    {
+        $this->setTranslatableSetting('version', $version);
+
+        return $this;
+    }
+}

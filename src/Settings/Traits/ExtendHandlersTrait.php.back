@@ -1,0 +1,98 @@
+<?php
+
+namespace vladpak1\TooSimpleQR\Settings\Traits;
+
+use vladpak1\TooSimpleQR\Image\Logo;
+use vladpak1\TooSimpleQR\Image\Gradient;
+
+trait ExtendHandlersTrait
+{
+    public function setLogo(Logo|string $logo): self
+    {
+        if ($logo instanceof Logo) {
+            $this->setExtendedSetting('logo', $logo);
+
+            return $this;
+        }
+
+        $logoEntity = new Logo();
+        $logoEntity->setByPath($logo);
+
+        $this->setExtendedSetting('logo', $logoEntity);
+
+        return $this;
+    }
+
+    public function setSize(int $size): self
+    {
+        $this->setExtendedSetting('size', $size);
+
+        return $this;
+    }
+
+    public function setBackgroundColor(string $hex): self
+    {
+        $this->setExtendedSetting('backgroundColor', $hex);
+        $this->setTranslatableSetting('transparentBackground', true);
+
+        return $this;
+    }
+
+    /**
+     * pixels.
+     */
+    public function setMargin(int $margin): self
+    {
+        $this->setTranslatableSetting('marginIncluded', true);
+        $this->setExtendedSetting('margin', $margin);
+
+        return $this;
+    }
+
+    /**
+     * Sets background gradient.
+     *
+     * @param string $startColor Required. Start color in HEX format.
+     * @param string $endColor   Required. End color in HEX format.
+     * @param string $direction  Optional. Gradient direction. Default: 'to bottom right'. Use constants from Gradient class.
+     */
+    public function setBackgroundGradient(string $startColor, string $endColor, string $direction = null): self
+    {
+        $direction ??= Gradient::DIRECTION_LEFT_TO_RIGHT;
+
+        $this->setExtendedSetting('backgroundGradient', [
+            'colors' => [
+                $startColor,
+                $endColor,
+            ],
+            'direction' => $direction,
+        ]);
+        $this->setTranslatableSetting('transparentBackground', true);
+
+        return $this;
+    }
+
+    public function setBackgroundPlasma(string $startColor, string $endColor, int $blur = 20): self
+    {
+        $this->setExtendedSetting(
+            'backgroundPlasma',
+            [
+                'colors' => [
+                    $startColor,
+                    $endColor,
+                ],
+                'blur' => $blur,
+            ]
+        );
+        $this->setTranslatableSetting('transparentBackground', true);
+
+        return $this;
+    }
+
+    public function setCustomFinderShape(string $shape): self
+    {
+        $this->setExtendedSetting('customFinderShape', $shape);
+
+        return $this;
+    }
+}

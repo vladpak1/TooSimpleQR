@@ -1,0 +1,8 @@
+vendor/*
+.idea/*
+composer.lock
+.php-cs-fixer.cache
+phpcs.xml
+phpunit.xml
+run.php
+preset.php

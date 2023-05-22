@@ -1,0 +1,82 @@
+{
+  "name": "vladpak1/too-simple-qr",
+  "description": "A wrapper for the chillerlan/php-qrcode library that allows you to generate a variety of QR codes with ease.",
+  "homepage": "https://github.com/vladpak1/too-simple-qr",
+  "license": [
+    "MIT",
+    "Apache-2.0"
+  ],
+  "type": "library",
+  "keywords": [
+    "QR code",
+    "qrcode",
+    "qr",
+    "qrcode-generator",
+    "qr-code-generator",
+    "qr-code",
+    "qr-generator",
+    "qr-code-generator",
+    "qr-code-generator-php",
+    "qr-code-php",
+    "qr-code-generator-php",
+    "qr-code-php"
+  ],
+  "authors": [
+    {
+      "name": "Vlad Pak",
+      "homepage": "https://github.com/vladpak1"
+    },
+    {
+      "name": "Kazuhiko Arase",
+      "homepage": "https://github.com/kazuhikoarase/qrcode-generator"
+    },
+    {
+      "name": "ZXing Authors",
+      "homepage": "https://github.com/zxing/zxing"
+    },
+    {
+      "name": "Ashot Khanamiryan",
+      "homepage": "https://github.com/khanamiryan/php-qrcode-detector-decoder"
+    },
+    {
+      "name": "Smiley",
+      "email": "smiley@chillerlan.net",
+      "homepage": "https://github.com/codemasher"
+    },
+    {
+      "name": "Contributors",
+      "homepage": "https://github.com/chillerlan/php-qrcode/graphs/contributors"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-mbstring": "*",
+    "ext-gd": "*",
+    "chillerlan/php-qrcode": "dev-main#c8c37a4e36300f1fc4a7fb44ee22186eac1e60a4",
+    "intervention/image": "^2.7",
+    "libern/qr-code-reader": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "vladpak1\\TooSimpleQR\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "vladpak1\\TooSimpleQR\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "dominikb/composer-license-checker": "^2.4",
+    "phpunit/phpunit": "^9.6",
+    "phpunit/php-code-coverage": "^9.2",
+    "friendsofphp/php-cs-fixer": "^3.16",
+    "mockery/mockery": "^1.5"
+  },
+  "scripts": {
+    "coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover clover.xml",
+    "coverage-win": "set \"XDEBUG_MODE=coverage\" && \"vendor\\bin\\phpunit\" --coverage-clover clover.xml",
+    "fix": "\"vendor/bin/php-cs-fixer\" fix --diff --allow-risky=yes --using-cache=no",
+    "test": "\"vendor/bin/phpunit\" --random-order"
+  }
+}
