@@ -98,7 +98,7 @@ class QRCode implements QRCodeInterface
      * Use OutputConstants::DRIVER_GD or OutputConstants::DRIVER_IMAGICK.
      *
      * The recommended driver is imagick (fast and high quality).
-     * Using GD driver can cause problems with performance and memory usage. (sorry)
+     * Using a GD driver can cause problems with performance and memory usage. (Sorry)
      */
     public function setDriver(string $driver): self
     {
