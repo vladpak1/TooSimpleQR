@@ -48,7 +48,6 @@
       "homepage": "https://github.com/chillerlan/php-qrcode/graphs/contributors"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": "^8.0",
     "ext-mbstring": "*",
