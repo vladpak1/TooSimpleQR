@@ -53,7 +53,7 @@
     "php": "^8.0",
     "ext-mbstring": "*",
     "ext-gd": "*",
-    "chillerlan/php-qrcode": "dev-main#c8c37a4e36300f1fc4a7fb44ee22186eac1e60a4",
+    "chillerlan/php-qrcode": "dev-main#c8c37a4e36300f1fc4a7fb44ee22186eac1e60a4 as 1.0.0",
     "intervention/image": "^2.7",
     "libern/qr-code-reader": "^1.0"
   },
