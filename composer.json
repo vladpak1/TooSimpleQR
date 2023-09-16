@@ -1,6 +1,8 @@
 {
   "name": "vladpak1/too-simple-qr",
   "description": "A wrapper for the chillerlan/php-qrcode library that allows you to generate a variety of QR codes with ease.",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "homepage": "https://github.com/vladpak1/too-simple-qr",
   "license": [
     "MIT",
