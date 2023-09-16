@@ -13,7 +13,7 @@ to use [chillerlan/php-qrcode](https://github.com/chillerlan/php-qrcode).
 
 Examples of QR codes created with this library:
 <p align="center">
-<img src="https://i.postimg.cc/HxrNR9tc/presets.png" alt="">
+<img src="https://raw.githubusercontent.com/vladpak1/TooSimpleQR/develop/assets/examples/presets.png" alt="">
 </p>
 
 ## Requirements
@@ -71,7 +71,7 @@ $qrCodeImage->echo();
 
 As a result, we get:
 <p align="center">
-<img src="https://i.postimg.cc/MK1pgysF/example-1.png" alt="">
+<img src="https://raw.githubusercontent.com/vladpak1/TooSimpleQR/develop/assets/examples/example-1.png" alt="">
 </p>
 
 We can also distort the QR code by adding, for example, a gradient:
@@ -81,7 +81,7 @@ We can also distort the QR code by adding, for example, a gradient:
 ```
 
 <p align="center">
-<img src="https://i.postimg.cc/cHv2gG65/12.png" alt="">
+<img src="https://raw.githubusercontent.com/vladpak1/TooSimpleQR/develop/assets/examples/example-2.png" alt="">
 </p>
 
 ## Need to quickly generate a QR code?
@@ -125,8 +125,7 @@ $qr->setDriver(OutputConstants::DRIVER_GD);
 ## Testing
 
 TooSimpleQR uses [PHPUnit](https://github.com/sebastianbergmann/phpunit) for testing.
-Currently, there are very few tests, mainly due to issues with the package architecture. I plan to address these issues
-in future updates.
+Currently, there are very few tests, mainly due to issues with the package architecture.
 
 To run tests, use the following command:
 
