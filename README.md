@@ -24,6 +24,20 @@ Examples of QR codes created with this library:
 
 ## Installation
 
+```json
+{
+  "require": {
+    "vladpak1/too-simple-qr": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
+```
+
+There are plans to move to a stable version, so soon this will not be necessary.
+
+Or if you already have minimum-stability set to dev, you can simply run:
+
 ```bash
 composer require vladpak1/too-simple-qr
 ```
